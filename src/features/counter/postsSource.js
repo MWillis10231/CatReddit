@@ -15,4 +15,5 @@ getData('https://www.reddit.com/r/cats.json')
 .then(response => catPosts = response)
 .then(() => console.log(catPosts))
 
-let title = catPosts.data.children[0].data.title
+export { catPosts };
+
