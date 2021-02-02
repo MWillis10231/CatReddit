@@ -1,25 +1,84 @@
 .App {
   text-align: center;
+  background-color:  orange;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "sidebar header header colorchange"
+    "sidebar nav nav ."
+    "sidebar main main main"
+    "sidebar main main main"
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-}
+/* Header and Logo */
 
 .App-header {
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  grid-area: header;
+}
+
+#logo {
+  height: 10vmin;
+}
+
+.colour-change {
+  color: red;
+  grid-area: colorchange;
+}
+
+/* Filter and NavBar */
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  grid-area: nav;
+}
+
+.filter {
+  background-color: white;
+  padding: 2%;
+  margin: 1% 5%;
+}
+
+/* Main Section */
+
+main {
+  width: 100%;
+  grid-area: main;
+}
+
+/* Post Boxes  */
+
+.post-box {
+  background-color: white;
+  grid-area: main;
+  margin-right: 2%;
+  display: flex;
+  flex-direction: row;
+}
+
+.post-image {
+  width: 100%;
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+}
+
+/* Sidebar Left */
+
+.sidebar-left {
+  grid-area: sidebar;
 }
 
 .App-link {

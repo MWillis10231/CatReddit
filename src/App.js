@@ -1,22 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import cat from './cat-placeholder.jpg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+
+import Header from './components/Header.js'
+import FilterBar from './components/FilterBar.js'
+import ColorChange from './components/ColorChange.js'
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <img src={logo} alt="The cat reddit logo" height="200px" />
-        <h1>CatReddit</h1>
-        <div className="filter">Hot / New / Top / Etc.</div>
-        <div className="flair-filter">Filter by Flair</div>
-      </header>
-      <body>
+      <Header />
+      <ColorChange />
+      <FilterBar />
         <main>
           <div className="post-box">
             <figure>
-              <img />
+              <img className="post-image" src={cat} alt="a cat" />
+            </figure>
+            <div className="post-content">
+              <p>Posted by u/RedditUser</p>
+              <p><time>12 hours ago</time></p>
+              <h2>Post title</h2>
+              <p>Up vote</p>
+              <p>1222</p>
+              <p>Down vote</p>
+            </div>
+          </div>
+          <div className="post-box">
+            <figure>
+              <img src={cat} alt="a cat" />
             </figure>
             <p>Posted by u/RedditUser</p>
             <p><time>12 hours ago</time></p>
@@ -53,7 +66,6 @@ function App() {
             </figure>
           </section>
         </aside>
-      </body>
     </div>
   );
 }
