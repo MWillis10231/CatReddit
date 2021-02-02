@@ -4,6 +4,8 @@ export default function PostBoxContainer() {
     return (
         <main>
             <PostBox />
+            <PostBox />
+            <PostBox />
         </main>
     )
 }

@@ -2,6 +2,7 @@
   text-align: center;
   background-color:  orange;
   display: grid;
+  height: fit-content;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
@@ -51,6 +52,7 @@ nav {
 
 main {
   width: 100%;
+  height: 100%;
   grid-area: main;
 }
 

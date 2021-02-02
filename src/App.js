@@ -6,7 +6,7 @@ import './App.css';
 import Header from './components/Header.js'
 import FilterBar from './components/FilterBar.js'
 import ColorChange from './components/ColorChange.js'
-import PostBoxContainer from './components/PostBox'
+import PostBoxContainer from './components/PostBoxContainer'
 
 function App() {
   return (
