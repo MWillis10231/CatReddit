@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
 
@@ -11,7 +11,6 @@ import PostBoxContainer from './components/PostBoxContainer'
 // import fetchCatData from './fetchCatData'
 import { useAsync } from 'react-async'
 
-
 const fetchCatData = async () => 
     await fetch('https://www.reddit.com/r/cats.json')
     .then(response => (response.ok ? response : Promise.reject(response)))
@@ -20,7 +19,6 @@ const fetchCatData = async () =>
 
 function App() {
   const { data, error, isLoading } = useAsync({ promiseFn: fetchCatData })
-  
 
   return (
     <div className="App">
