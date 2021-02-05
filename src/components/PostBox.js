@@ -1,35 +1,7 @@
 import cat from '../cat-placeholder.jpg'
-// import fetchCatData from './fetchCatData'
-import { useAsync } from 'react-async'
 import React from 'react'
 
-//'https://www.reddit.com/r/cats.json'
-
-const fetchCatData = async () => {
-    await fetch('https://www.reddit.com/r/cats.json')
-    .then(response => (response.ok ? response : Promise.reject(response)))
-    .then(response => response.json())
-    .then(response => {
-        console.log(response)
-    }) 
-}
-
 export default function PostBox () {
-    const { data, error, isLoading } = useAsync({ promiseFn: fetchCatData })
-    if (isLoading) {
-        return (
-        "Loading"
-        )
-    }
-    if (error) {
-        return (
-        `Something went wrong: ${error.message}`
-        )
-    }
-    if (data) {
-
-    }
-
     return (
         <div className="post-box">
                 <figure>
