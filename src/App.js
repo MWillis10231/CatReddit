@@ -20,6 +20,7 @@ const fetchCatData = async () =>
 
 function App() {
   const { data, error, isLoading } = useAsync({ promiseFn: fetchCatData })
+  
 
   return (
     <div className="App">
