@@ -7,6 +7,7 @@ export default function PostBox (props) {
     if (props.data.data.post_hint === 'image' ) {
         picture = props.data.data.url;
     } else if (props.data.data.post_hint === 'rich:video') {
+        // this is a temp fix for gifs
         picture = props.data.data.thumbnail;
     } else {
         picture = cat;
