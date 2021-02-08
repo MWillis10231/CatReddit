@@ -11,17 +11,25 @@ import PostBoxContainer from './components/PostBoxContainer'
 // import fetchCatData from './fetchCatData'
 import { useAsync } from 'react-async'
 
+//should be some way to get this to change with a state hook
+let url = 'https://www.reddit.com/r/cats.json';
+
 const fetchCatData = async () => 
-    await fetch('https://www.reddit.com/r/cats.json')
+    await fetch(url)
     .then(response => (response.ok ? response : Promise.reject(response)))
     .then(response => response.json())
 
 
 function App() {
   const { data, error, isLoading } = useAsync({ promiseFn: fetchCatData })
+  const [ background, setBackground ] = useState('orange')
 
-  return (
-    <div className="App">
+  function changeBackground(newBackground) {
+    setBackground(newBackground);
+  }
+
+   return (
+    <div className="App" style={{backgroundColor: background}}>
       <Header />
       <aside className="sidebar-left">
         <section className="rules">
@@ -43,7 +51,7 @@ function App() {
           </ol>
         </section>
       </aside>
-      <ColorChange />
+      <ColorChange background={background} onClick={changeBackground}/>
       <FilterBar />
       <PostBoxContainer data={data} error={error} isLoading={isLoading}/>
     </div>
