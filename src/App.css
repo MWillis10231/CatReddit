@@ -59,11 +59,14 @@ main {
 /* Post Boxes  */
 
 .post-box {
-  background-color: white;
+  background-color: #FFFDD0;
+  border-radius: 25px;
   grid-area: main;
   margin-right: 2%;
+  margin-bottom: 1%;
   display: flex;
   flex-direction: row;
+  padding: 1%;
 }
 
 .post-image {
@@ -73,8 +76,104 @@ main {
 .post-content {
   display: flex;
   flex-direction: column;
-  width: 50%;
   justify-content: center;
+  width: 66%;
+}
+
+.post-content-small {
+  /* Used if there is only a title and no image */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.post {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.post-title {
+  font-size: 1.5rem;
+  color: red;
+  margin: 0;
+}
+
+.post-score {
+  display: flex;
+  flex-direction: column;
+  width: 5%;
+  justify-content: center;
+}
+
+.post-score figure {
+  width: 100%;
+  margin: 0;
+}
+
+.vote {
+  width: 50%;
+}
+
+.score {
+  font-weight: bolder;
+  margin: 1% 0 5%;
+}
+
+/* Interactions */
+
+.post-interactions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0.5%;
+  padding: 0;
+  list-style-type: none;
+}
+
+.post-interactions li {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5%;
+  margin: 0 1%;
+  background-color: red;
+}
+
+.post-interactions li a {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.post-interactions li:hover, li:active {
+  background-color: rgb(218, 40, 40);
+}
+
+.share-button {
+  color: white;
+  border: none;
+}
+
+.share-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.share-dropdown:hover {
+  display: block;
+}
+
+.share-dropdown a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 /* Sidebar Left */
