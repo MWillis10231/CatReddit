@@ -1,15 +1,16 @@
 .App {
   text-align: center;
-  background-color:  orange;
+  box-sizing: border-box;
+  background-color:  white;
   display: grid;
   height: fit-content;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1.5fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "sidebar header header colorchange"
-    "sidebar nav nav ."
-    "sidebar main main main"
-    "sidebar main main main"
+    "header header header header"
+    ". nav nav ."
+    "main main main sidebar"
+    "main main main sidebar"
 }
 
 /* Header and Logo */
@@ -26,11 +27,6 @@
 
 #logo {
   height: 10vmin;
-}
-
-.colour-change {
-  color: red;
-  grid-area: colorchange;
 }
 
 /* Filter and NavBar */
@@ -54,6 +50,7 @@ main {
   width: 100%;
   height: 100%;
   grid-area: main;
+  box-sizing: border-box;
 }
 
 /* Post Boxes  */
@@ -62,18 +59,40 @@ main {
   background-color: #FFFDD0;
   border-radius: 25px;
   grid-area: main;
-  margin-right: 2%;
+  margin-left: 2%;
   margin-bottom: 1%;
   display: flex;
   flex-direction: row;
-  padding: 1%;
+  padding: 2%;
+  box-sizing: border-box;
+  justify-content: space-between;
 }
 
 .post-image {
-  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover; 
 }
 
+.post-video {
+  box-sizing: border-box;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover; 
+}
+
+.post-media-container {
+  margin: 1%;
+  height: 350px;
+  width: 33%;
+  box-sizing: border-box;
+}
+
+/* Post Content.js */
+
 .post-content {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,19 +105,44 @@ main {
   flex-direction: column;
   width: 100%;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .post {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  box-sizing: border-box;
 }
 
-.post-title {
-  font-size: 1.5rem;
-  color: red;
-  margin: 0;
+/* Post title */
+
+header .post-title {
+  width: 100%;
+  height: auto;
+  margin: 0 1rem;
+  box-sizing: border-box;
 }
+
+.post-title h2 {
+  font-size: 1.5rem;
+  color: pink;
+  margin: 0;
+  display: inline;
+}
+
+.post-flair {
+  margin: 0 1% 1%;
+  font-size: 0.75rem;
+  background-color: aqua;
+  padding: 0.5rem;
+  border-radius: 15px;
+  align-self: center;
+  justify-self: center;
+  display: inline-flex;
+}
+
+/* Post score */
 
 .post-score {
   display: flex;
@@ -176,11 +220,33 @@ main {
   display: block;
 }
 
-/* Sidebar Left */
+/* Sidebar */
 
-.sidebar-left {
+.sidebar {
   grid-area: sidebar;
+  height: fit-content;
 }
+
+.rules {
+  background-color: #242124;
+  border: thick #CC7722 ridge;
+  margin: 0 2%;
+}
+
+.rules h3 {
+  color: #DC143C;
+}
+
+.rules li {
+  color: #fffff0;
+}
+
+.colour-change {
+  color: red;
+  margin: 2%;
+}
+
+/* Misc Legacy stuff just in case */
 
 .App-link {
   color: rgb(112, 76, 182);
@@ -195,5 +261,32 @@ main {
   }
   100% {
     transform: translateY(0px)
+  }
+}
+
+/* MEDIA RULES */
+
+@media only screen and (max-width: 1000px) {
+  .sidebar {
+    grid-area: colorchange;
+  }
+
+  .rules {
+    display: none;
+  }
+
+  .App {
+    display: grid;
+    grid-template-areas:
+      "header header header header"
+      "colorchange colorchange colorchange colorchange"
+      "nav nav nav nav"
+      "main main main main"
+      "main main main main"
+  }
+
+  
+  .post-box {
+    margin-right: 2%;
   }
 }

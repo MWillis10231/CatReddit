@@ -19,10 +19,10 @@ export default function PostBox (props) {
         return (
             <div className="post-box">
                 <Score score={props.data.data.score}/>
-                <figure>
+                <figure className="post-media-container">
                     <img className="post-image" alt="a cat" src={picture} />
                 </figure>
-                <PostContent data={props.data} className="post-content" />
+                <PostContent data={props.data}/>
             </div>
     )
     } else if (props.data.data.is_gallery) {
@@ -32,10 +32,10 @@ export default function PostBox (props) {
         return (
             <div className="post-box">
                 <Score score={props.data.data.score}/>
-                <figure>
+                <figure className="post-media-container">
                     <img className="post-image" alt="a cat" src={picture} />
                 </figure>
-                <PostContent data={props.data} className="post-content" />
+                <PostContent data={props.data} />
             </div>
     )
     } else if (props.data.data.post_hint === 'hosted:video') {
@@ -43,10 +43,10 @@ export default function PostBox (props) {
         return (
             <div className="post-box">
                 <Score score={props.data.data.score}/>
-                <figure>
-                    <video className="post-image" autoPlay controls><source src={picture}></source>Your browser does not support the video tag</video>
+                <figure className="post-media-container">
+                    <video className="post-video" autoPlay controls><source src={picture}></source>Your browser does not support the video tag</video>
                 </figure>
-                <PostContent data={props.data} className="post-content" />
+                <PostContent data={props.data} />
             </div>
     )
     } else if (props.data.data.post_hint === 'rich:video') {
@@ -55,10 +55,10 @@ export default function PostBox (props) {
         return (
             <div className="post-box">
                 <Score score={props.data.data.score}/>
-                <figure>
+                <figure className="post-media-container">
                     <video className="post-image" autoPlay controls><source src={picture}></source>Your browser does not support the video tag</video>
                 </figure>
-                <PostContent data={props.data} className="post-content" />
+                <PostContent data={props.data} />
             </div>
         )
         
@@ -69,10 +69,10 @@ export default function PostBox (props) {
     return (
         <div className="post-box">
             <Score score={props.data.data.score}/>
-            <figure>
+            <figure className="post-media-container">
                 <img className="post-image" alt="a cat" src={picture} />
             </figure>
-            <PostContent data={props.data} className="post-content" />
+            <PostContent data={props.data} />
         </div>
     )
 }
