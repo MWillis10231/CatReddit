@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectBackground } from './Redux/background/backgroundSlice'
 import './App.css';
-import selectBackground from './features/background/backgroundSlice';
 
 import Header from './components/Header.js'
 import FilterBar from './components/FilterBar.js'
