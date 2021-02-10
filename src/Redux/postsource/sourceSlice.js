@@ -1,7 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+
+export const urlFilters = {
+    default: 'https://www.reddit.com/r/cats.json', 
+    hot: 'https://www.reddit.com/r/cats/hot/',
+    new: 'https://www.reddit.com/r/cats/new.json',
+    top: { 
+        default: 'https://www.reddit.com/r/cats/top.json',
+        now: 'https://www.reddit.com/r/cats/top/?t=hour.json',
+        today: 'https://www.reddit.com/r/cats/top/?t=day',
+        thisweek: 'https://www.reddit.com/r/cats/top/?t=week',
+        thismonth: 'https://www.reddit.com/r/cats/top/?t=month',
+        thisyear: 'https://www.reddit.com/r/cats/top/?t=year',
+        alltime: 'https://www.reddit.com/r/cats/top/?t=all',
+        },
+    rising: 'https://www.reddit.com/r/cats/rising.json'
+}
+
+export const fetchCatData = createAsyncThunk('fetchdata', async () => 
+    await fetch(urlFilters.default)
+    .then(response => (response.ok ? response : Promise.reject(response)))
+    .then(response => response.json())
+)
 
 const initialState = {
-    url: 'https://www.reddit.com/r/cats.json',
+    status: 'idle',
+    data: {},
   }
   
 const sourceSlice = createSlice({
@@ -10,16 +33,21 @@ const sourceSlice = createSlice({
     reducers: {
         urlChanged(state, action) {
             switch (action.type) {
-                case 'change': {
-                    return {
-                        ...state,
-                        url: action.payload
-                    }
-                }
                 default:
                     return state;
             }
         }
+    },
+    extraReducers: builder => {
+        builder
+            .addCase(fetchCatData.pending, (state, action) => {
+                state.status = 'loading'
+            })
+            .addCase(fetchCatData.fulfilled, (state, action) => {
+                const newData = action.payload;
+                state.data = newData;
+                state.status = 'idle'
+            })
     }
 })
 
