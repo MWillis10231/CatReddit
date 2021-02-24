@@ -1,4 +1,4 @@
-import PostBox from './PostBox'
+import PostBox2 from './PostBox2'
 
 export default function PostBoxContainer(props) {
     if (props.isLoading) return "Loading..."
@@ -7,19 +7,19 @@ export default function PostBoxContainer(props) {
     
     return (
         <main>
-            <PostBox data={props.data.data.children[0]}/>
-            <PostBox data={props.data.data.children[1]}/>
-            <PostBox data={props.data.data.children[2]}/>
-            <PostBox data={props.data.data.children[3]}/>
-            <PostBox data={props.data.data.children[4]}/>
-            <PostBox data={props.data.data.children[5]}/>
-            <PostBox data={props.data.data.children[6]}/>
-            <PostBox data={props.data.data.children[7]}/>
-            <PostBox data={props.data.data.children[8]}/>
-            <PostBox data={props.data.data.children[9]}/>
-            <PostBox data={props.data.data.children[10]}/>
-            <PostBox data={props.data.data.children[11]}/>
-            <PostBox data={props.data.data.children[12]}/>
+            <PostBox2 data={props.data.data.children[0]}/>
+            <PostBox2 data={props.data.data.children[1]}/>
+            <PostBox2 data={props.data.data.children[2]}/>
+            <PostBox2 data={props.data.data.children[3]}/>
+            <PostBox2 data={props.data.data.children[4]}/>
+            <PostBox2 data={props.data.data.children[5]}/>
+            <PostBox2 data={props.data.data.children[6]}/>
+            <PostBox2 data={props.data.data.children[7]}/>
+            <PostBox2 data={props.data.data.children[8]}/>
+            <PostBox2 data={props.data.data.children[9]}/>
+            <PostBox2 data={props.data.data.children[10]}/>
+            <PostBox2 data={props.data.data.children[11]}/>
+            <PostBox2 data={props.data.data.children[12]}/>
         </main>
     )
 }
