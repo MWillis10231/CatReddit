@@ -37,6 +37,7 @@ const sourceSlice = createSlice({
         urlChanged(state, action) {
             const page = action.payload
             state.url = urlFilters[page]
+            state.status = 'idle'
         }
     },
     extraReducers: {

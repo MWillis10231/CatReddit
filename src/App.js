@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectBackground } from './Redux/background/backgroundSlice'
-import { urlChanged, fetchCatData, selectPosts, selectUrl } from './Redux/postsource/sourceSlice'
+import { fetchCatData, selectPosts, selectUrl } from './Redux/postsource/sourceSlice'
 import './App.css';
 
 import Header from './components/Header.js'
