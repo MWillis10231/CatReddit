@@ -4,8 +4,8 @@ export const urlFilters = {
     default: 'https://www.reddit.com/r/cats.json', 
     hot: 'https://www.reddit.com/r/cats/hot/',
     new: 'https://www.reddit.com/r/cats/new.json',
-    top: { 
-        default: 'https://www.reddit.com/r/cats/top.json',
+    top: 'https://www.reddit.com/r/cats/top.json',
+    topextras: { 
         now: 'https://www.reddit.com/r/cats/top/?t=hour.json',
         today: 'https://www.reddit.com/r/cats/top/?t=day',
         thisweek: 'https://www.reddit.com/r/cats/top/?t=week',
@@ -24,6 +24,8 @@ export const fetchCatData = createAsyncThunk('fetchdata', async () =>
 
 const initialState = {
     status: 'idle',
+    page: 'home',
+    url: urlFilters.default,
     data: {},
   }
   
@@ -32,10 +34,8 @@ const sourceSlice = createSlice({
     initialState,
     reducers: {
         urlChanged(state, action) {
-            switch (action.type) {
-                default:
-                    return state;
-            }
+            const page = action.payload
+            state.url = urlFilters[page]
         }
     },
     extraReducers: builder => {
