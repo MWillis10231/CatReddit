@@ -25,8 +25,13 @@
   grid-area: header;
 }
 
+.App-header h1 {
+  -webkit-box-reflect: below 0px linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.05));
+}
+
 #logo {
   height: 10vmin;
+  -webkit-box-reflect: below 0px linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.1));
 }
 
 /* Filter and NavBar */
@@ -73,6 +78,38 @@ main {
   height: 100%;
   max-width: 100%;
   object-fit: cover; 
+  -webkit-box-reflect: right 0px linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.1));
+}
+
+/* Settings for the default image */
+
+.post-image-default {
+  box-sizing: border-box;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  -webkit-box-reflect: right 0px linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.1));
+}
+
+.default-image-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  text-decoration: none;
+  color: #DC143C;
+}
+
+.post-overlay {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
 .post-video {
@@ -87,6 +124,7 @@ main {
   height: 350px;
   width: 33%;
   box-sizing: border-box;
+  position: relative;
 }
 
 /* Post Content.js */
@@ -242,8 +280,12 @@ header .post-title {
 }
 
 .colour-change {
-  color: red;
+  color: #DC143C;
   margin: 2%;
+}
+
+.colour-change-button {
+
 }
 
 /* Misc Legacy stuff just in case */

@@ -5,6 +5,8 @@ import PostContent from './PostContent'
 
 
 export default function PostBox (props) {
+    let permalink = `https://www.reddit.com/${props.data.data.permalink}`
+
     let picture;
     //if there's no image on the post, don't load anything, otherwise if gif or image load it. Edge-cases should show a default kitty
     if (props.data.data.media === null && !props.data.data.post_hint && !props.data.data.is_gallery) {
@@ -20,20 +22,38 @@ export default function PostBox (props) {
             <div className="post-box">
                 <Score score={props.data.data.score}/>
                 <figure className="post-media-container">
-                    <img className="post-image" alt="a cat" src={picture} />
+                    <a href={permalink}>  
+                        <img className="post-image" alt="a cat" src={picture} />
+                    </a>
                 </figure>
                 <PostContent data={props.data}/>
             </div>
     )
-    } else if (props.data.data.is_gallery) {
-        //if it's a gallery of images
-        // at the moment render first image. could look at implementing a gallery feature?
+    } else if (props.data.data.is_gallery && props.data.data.thumbnail === 'default') {
+        //if it's a gallery of images without a thumbnail render the default image
         picture = props.data.data.thumbnail;
         return (
             <div className="post-box">
                 <Score score={props.data.data.score}/>
                 <figure className="post-media-container">
-                    <img className="post-image" alt="a cat" src={picture} />
+                    <a href={permalink}>  
+                        <img className="post-image-default" alt="a cat" src={cat} />
+                        <figcaption className="default-image-text">Image not found</figcaption>
+                    </a>
+                </figure>
+                <PostContent data={props.data} />
+            </div>
+    )
+    } else if (props.data.data.is_gallery) {
+        //if it's a gallery of images render first image
+        picture = props.data.data.thumbnail;
+        return (
+            <div className="post-box">
+                <Score score={props.data.data.score}/>
+                <figure className="post-media-container">
+                    <a href={permalink}>  
+                        <img className="post-image" alt="a cat" src={picture} />
+                    </a>
                 </figure>
                 <PostContent data={props.data} />
             </div>
@@ -63,16 +83,17 @@ export default function PostBox (props) {
         )
         
     } else {
-        picture = cat;
-    }
-
-    return (
+        return (
         <div className="post-box">
-            <Score score={props.data.data.score}/>
-            <figure className="post-media-container">
-                <img className="post-image" alt="a cat" src={picture} />
-            </figure>
-            <PostContent data={props.data} />
+        <Score score={props.data.data.score}/>
+        <figure className="post-media-container">
+            <a href={permalink}>
+                <img className="post-image-default" alt="a cat" src={cat} />
+                <figcaption className="default-image-text">Image not found</figcaption>
+            </a>
+        </figure>
+        <PostContent data={props.data} />
         </div>
-    )
+        )
+    }
 }
