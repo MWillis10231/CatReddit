@@ -21,16 +21,17 @@ function App() {
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchCatData())
+      dispatch(fetchCatData(url))
     }
-  }, [status, dispatch])
+  }, [status, dispatch, url])
 
   let content
 
   if (status === 'loading') {
     content = <div>Loading...</div>
   } else if (status === 'succeeded') {
-    content = <PostBoxContainer data={data} error={error} status={status}/>
+    content = 
+      <PostBoxContainer data={data} error={error} status={status}/>
   } else if (status === 'failed') {
     content = <div>{error}</div>
   }

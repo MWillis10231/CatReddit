@@ -16,8 +16,8 @@ export const urlFilters = {
     rising: 'https://www.reddit.com/r/cats/rising.json'
 }
 
-export const fetchCatData = createAsyncThunk('fetchdata', async () => 
-    await fetch('https://www.reddit.com/r/cats.json')
+export const fetchCatData = createAsyncThunk('fetchdata', async (url) => 
+    await fetch(url)
     .then(response => (response.ok ? response : Promise.reject(response)))
     .then(response => response.json())
 )
