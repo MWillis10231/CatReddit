@@ -17,8 +17,7 @@ export default function FilterBar() {
                 <button value='new' onClick={changeFilter}>New</button>
                 <button value='top' onClick={changeFilter}>Top</button>
                 <button value='rising' onClick={changeFilter}>Rising</button>
-                </div>
-            <div className="filter">Filter by Flair</div>
+            </div>
         </nav>
     )
 }

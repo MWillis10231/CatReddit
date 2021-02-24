@@ -1,14 +1,16 @@
 import Interactions from './Interactions'
+import convertTime from './timeConversion'
 
 export default function PostContent(props) {
-    // Sort out the date: This doesn't work but not sure why exactly
-    const postDate = new Date(props.data.data.created_utc).toUTCString();
+    // Sort out the date - converts the UNIX UTC time to a human-readable date
+    const postDate = convertTime(props.data.data.created_utc);
+
     return(
         <div className="post-content">
             <p>
-                Posted by {props.data.data.author}{props.data.data.author_flair_text ? <span className="flair">{props.data.data.author_flair_text}</span> : <span></span>}
+                Posted by <strong>{props.data.data.author}</strong>
                 <br></br>
-                <time>{postDate}</time>
+                <time><em>{postDate}</em></time>
             </p>
             <header className="post-title">
                 <h2>{props.data.data.title}</h2>

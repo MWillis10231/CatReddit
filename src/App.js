@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectBackground } from './Redux/background/backgroundSlice'
 import { fetchCatData, selectPosts, selectUrl } from './Redux/postsource/sourceSlice'
 import './App.css';
+import cat from './logo.png'
 
 import Header from './components/Header.js'
 import FilterBar from './components/FilterBar.js'
@@ -28,7 +29,14 @@ function App() {
   let content
 
   if (status === 'loading') {
-    content = <div>Loading...</div>
+    content = (
+      <div className="post-box-loading">
+        <div className="loader">
+          <p className="load-text">Loading...</p>
+          <img className="load-image" alt="a cat" src={cat} />
+        </div>
+      </div>
+      )
   } else if (status === 'succeeded') {
     content = 
       <PostBoxContainer data={data} error={error} status={status}/>
