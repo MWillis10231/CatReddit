@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectBackground } from './Redux/background/backgroundSlice'
-import { selectUrl } from './Redux/postsource/sourceSlice'
+import { urlChanged, fetchCatData, selectPosts, selectUrl } from './Redux/postsource/sourceSlice'
 import './App.css';
 
 import Header from './components/Header.js'
@@ -9,27 +9,37 @@ import FilterBar from './components/FilterBar.js'
 import SideBar from './components/SideBar.js'
 import PostBoxContainer from './components/PostBoxContainer.js'
 
-// import fetchCatData from './fetchCatData'
-import { useAsync } from 'react-async'
-
-//should be some way to get this to change with a state hook
-const url = 'https://www.reddit.com/r/cats.json';
-
-const fetchCatData = async () => 
-    await fetch(url)
-    .then(response => (response.ok ? response : Promise.reject(response)))
-    .then(response => response.json())
-
 function App() {
-  const { data, error, isLoading } = useAsync({ promiseFn: fetchCatData })
+  const dispatch = useDispatch();
+  const url = useSelector(selectUrl);
+  const data = useSelector(selectPosts);
+
+  const status = useSelector(state => state.source.status)
+  const error = useSelector(state => state.source.error)
+
   const background = useSelector(selectBackground)
 
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchCatData())
+    }
+  }, [status, dispatch])
+
+  let content
+
+  if (status === 'loading') {
+    content = <div>Loading...</div>
+  } else if (status === 'succeeded') {
+    content = <PostBoxContainer data={data} error={error} status={status}/>
+  } else if (status === 'failed') {
+    content = <div>{error}</div>
+  }
    return (
     <div className="App" style={{backgroundColor: background}}>
       <Header />
       <FilterBar />
       <SideBar background={background} />
-      <PostBoxContainer data={data} error={error} isLoading={isLoading}/>
+      {content}
     </div>
 
   );
