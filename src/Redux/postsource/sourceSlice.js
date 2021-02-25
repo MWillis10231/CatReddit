@@ -1,19 +1,20 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
+export const baseUrl = 'https://www.reddit.com/r/cats'
+export const redditURL = 'https://www.reddit.com'
+
 export const urlFilters = {
-    default: 'https://www.reddit.com/r/cats.json', 
-    hot: 'https://www.reddit.com/r/cats/hot.json',
-    new: 'https://www.reddit.com/r/cats/new.json',
-    top: 'https://www.reddit.com/r/cats/top.json',
-    topextras: { 
-        now: 'https://www.reddit.com/r/cats/top/?t=hour.json',
-        today: 'https://www.reddit.com/r/cats/top/?t=day.json',
-        thisweek: 'https://www.reddit.com/r/cats/top/?t=week.json',
-        thismonth: 'https://www.reddit.com/r/cats/top/?t=month.json',
-        thisyear: 'https://www.reddit.com/r/cats/top/?t=year.json',
-        alltime: 'https://www.reddit.com/r/cats/top/?t=all.json',
-        },
-    rising: 'https://www.reddit.com/r/cats/rising.json'
+    default: '', 
+    hot: '/hot',
+    new: '/new',
+    top: '/top',
+    topnow: '/top/?t=hour',
+    topday: '/top/?t=day',
+    topthisweek: '/top/?t=week',
+    topthismonth: '/top/?t=month',
+    topthisyear: '/top/?t=year',
+    topalltime: '/top/?t=all',
+    rising: '/rising',
 }
 
 export const fetchCatData = createAsyncThunk('fetchdata', async (url) => 
@@ -24,21 +25,21 @@ export const fetchCatData = createAsyncThunk('fetchdata', async (url) =>
 
 const initialState = {
     status: 'idle',
-    page: 'home',
-    url: urlFilters.default,
+    url: baseUrl + urlFilters.default + '.json',
     error: null,
     data: [],
+    comments: [],
   }
   
 const sourceSlice = createSlice({
     name: 'source',
     initialState,
     reducers: {
-        urlChanged(state, action) {
+        filterChanged(state, action) {
             const page = action.payload
-            state.url = urlFilters[page]
+            state.url = baseUrl + urlFilters[page] + '.json'
             state.status = 'idle'
-        }
+        },
     },
     extraReducers: {
         [fetchCatData.pending]: (state, action) => {
@@ -52,10 +53,11 @@ const sourceSlice = createSlice({
         [fetchCatData.rejected]: (state, action) => {
             state.status = 'failed'
             state.error = action.error.message
-        }
+        },
     }
 })
 
+export const { filterChanged } = sourceSlice.actions
 export const { urlChanged } = sourceSlice.actions
 
 export const selectUrl = state => state.source.url;

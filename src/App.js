@@ -5,10 +5,18 @@ import { fetchCatData, selectPosts, selectUrl } from './Redux/postsource/sourceS
 import './App.css';
 import cat from './logo.png'
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
+
 import Header from './components/Header.js'
 import FilterBar from './components/FilterBar.js'
 import SideBar from './components/SideBar.js'
 import PostBoxContainer from './components/PostBoxContainer.js'
+import SinglePostContainer from './components/SinglePostContainer'
 
 function App() {
   const dispatch = useDispatch();
@@ -41,16 +49,31 @@ function App() {
     content = 
       <PostBoxContainer data={data} error={error} status={status}/>
   } else if (status === 'failed') {
-    content = <div>{error}</div>
+    content = (
+      <div className="post-box-loading">
+        <div className="loader">
+          <p className="load-text">{error}</p>
+          <img className="load-image" alt="a cat" src={cat} />
+          <button type="button" onClick={() => dispatch(fetchCatData(url))}>Try again</button>
+        </div>
+      </div>
+    )
   }
    return (
-    <div className="App" style={{backgroundColor: background}}>
+    <Router>
+      <div className="App" style={{backgroundColor: background}}>
       <Header />
       <FilterBar />
       <SideBar background={background} />
-      {content}
+      <Switch>
+        <Route exact path="/" render={() => (
+          <React.Fragment>{content}</React.Fragment>
+        )}/>
+        <Route exact path="/:postId" component={SinglePostContainer}/>
+        <Redirect to="/" />
+      </Switch>
     </div>
-
+  </Router> 
   );
 }
 

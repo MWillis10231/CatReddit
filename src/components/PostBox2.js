@@ -13,10 +13,10 @@ export default function PostBox (props) {
     let pictureContent;
 
     if (props.data.data.media === null && !props.data.data.post_hint && !props.data.data.is_gallery) {
-        postContent = <PostContent data={props.data} className="post-content-small" />
+        postContent = <PostContent data={props.data} className="post-content-small" id={props.id}/>
         pictureContent = null;
     } else {
-        postContent = <PostContent data={props.data}/>
+        postContent = <PostContent data={props.data} id={props.id}/>
     }
     // if it's an image, set picture accordingly
     if (props.data.data.post_hint === 'image' ) {
