@@ -2,9 +2,11 @@ import cat from '../cat-placeholder.jpg'
 import React from 'react'
 import Score from './Score.js'
 import PostContent from './PostContent'
-
+import { selectBackground } from '../Redux/background/backgroundSlice'
+import { useSelector } from 'react-redux';
 
 export default function PostBox (props) {
+    const overlayColor = useSelector(selectBackground)
     let permalink = `https://www.reddit.com/${props.data.data.permalink}`
     let picture;
     let postContent;
@@ -21,7 +23,7 @@ export default function PostBox (props) {
         picture = props.data.data.url;
         pictureContent = (
             <figure className="post-media-container">
-                <a href={permalink}>  
+                <a href={permalink} target="_blank" rel="noreferrer">  
                     <img className="post-image" alt="a cat" src={picture} />
                 </a>
             </figure>
@@ -32,7 +34,7 @@ export default function PostBox (props) {
             <figure className="post-media-container">
                 <a href={permalink}>  
                     <img className="post-image-default" alt="a cat" src={cat} />
-                    <figcaption className="default-image-text">Image not found</figcaption>
+                    <figcaption className="default-image-text" style={{backgroundColor: overlayColor}}><em>Image not found</em></figcaption>
                 </a>
             </figure>
         )
@@ -41,7 +43,7 @@ export default function PostBox (props) {
         picture = props.data.data.thumbnail;
         pictureContent = (
             <figure className="post-media-container">
-                <a href={permalink}>  
+                <a href={permalink} target="_blank" rel="noreferrer">  
                     <img className="post-image" alt="a cat" src={picture} />
                 </a>
             </figure>
@@ -65,9 +67,9 @@ export default function PostBox (props) {
     // otherwise return default kitty just in case
     } else {
         <figure className="post-media-container">
-            <a href={permalink}>
+            <a href={permalink} target="_blank" rel="noreferrer">
                 <img className="post-image-default" alt="a cat" src={cat} />
-                <figcaption className="default-image-text">Image not found</figcaption>
+                <figcaption className="default-image-text" style={{backgroundColor: overlayColor}}><em>Image not found</em></figcaption>
             </a>
         </figure>
     }
