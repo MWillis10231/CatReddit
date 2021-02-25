@@ -9,7 +9,13 @@ export default function Interactions(props) {
     return(
         <ul className="post-interactions">
             <li><a href={permalink} target="_blank" rel="noreferrer">Comments</a></li>
-            <li><div value={url} id="copy" onClick={copyURL}>Copy</div></li>
+            <li className="drop-down">
+                <div className="drop-down-button" value={url} id="copy">Copy</div>
+                <div className="drop-down-content">
+                    <input type="text" value={url} id="url"></input>
+                    <button>Copy URL</button>
+                </div>
+            </li>
             <li><a href={shareURL} target="_blank" rel="noreferrer">Share</a></li>
         </ul>
     )

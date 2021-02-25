@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   box-sizing: border-box;
-  background-color:  white;
+  background-color: #c8bae3;
   display: grid;
   height: fit-content;
   grid-template-columns: 1fr 1fr 1fr 1.5fr;
@@ -19,6 +19,11 @@ h1, h2, h3, h4, h5, button {
 
 p, li, span {
   font-family: 'Ubuntu', sans-serif;
+}
+
+button { 
+  padding: 0 0.5rem;
+  margin: 0 0.25rem;
 }
 
 
@@ -217,15 +222,15 @@ header .post-title {
 
 .post-title h2 {
   font-size: 1.5rem;
-  color: #DC143C;
+  color: black;
   margin: 0;
   display: inline;
 }
 
 .post-flair {
-  margin: 0 1% 1%;
+  margin: 0 1%;
   font-size: 0.75rem;
-  background-color: #CC8899;
+  background-color: #c8bae3;
   padding: 0.5rem;
   border-radius: 15px;
   align-self: center;
@@ -265,15 +270,20 @@ header .post-title {
   margin: 0.5%;
   padding: 0;
   list-style-type: none;
+  overflow: hidden;
 }
 
 .post-interactions li {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  padding: 0.5%;
-  margin: 0 1%;
-  background-color: #cc8899;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+  margin: 0 0.25rem;
+  border: 1px rgb(0, 0, 0) solid;
+  background-color: #E5E4E2;
+  border-radius: 5px;
+  font-family: 'Eczar', serif;
 }
 
 .post-interactions li a {
@@ -283,31 +293,46 @@ header .post-title {
 }
 
 .post-interactions li:hover, li:active {
-  background-color: hsl(345, 40%, 60%)
+  background-color: hsl(40, 5%, 80%);
 }
 
-.share-button {
-  color: black;
+.drop-down {
+  float: left;
+  overflow: hidden;
+}
+
+.drop-down .drop-down-button {
+  font-size: 16px;
   border: none;
+  outline: none;
+  color: black;
+  font-size: 0.9rem;
+  padding: 0.5%;
+  margin: 0 1%;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
 }
 
-.share-dropdown {
+.drop-down-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
-.share-dropdown:hover {
-  display: block;
+.drop-down-content button, input {
+  font-family: inherit; 
+  position: relative;
+  top: 7px;
+  right: 4rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
 }
 
-.share-dropdown a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
+.drop-down-content input {
+  width: auto;
+}
+
+.drop-down:hover .drop-down-content {
   display: block;
 }
 
@@ -337,30 +362,11 @@ header .post-title {
 }
 
 .colour-change {
-  color: #DC143C;
   margin: 2%;
 }
 
 .colour-change-button {
   /* This should change colour based on the app colour somehow */
-}
-
-/* Misc Legacy stuff just in case */
-
-.App-link {
-  color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px)
-  }
-  100% {
-    transform: translateY(0px)
-  }
 }
 
 /* MEDIA RULES */
