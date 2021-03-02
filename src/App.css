@@ -125,6 +125,12 @@ main {
   font-weight: bold;
 }
 
+.fail-image {
+  height: 10vmin;
+  position: relative;
+  animation: roll 4s infinite;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -140,6 +146,22 @@ main {
   }
   100% {
     transform: rotate(360deg)
+  }
+}
+
+@keyframes roll {
+  0% {
+    right: 200px;
+    transform: rotate(0deg);
+  }
+  50% {
+    right: -200px;
+    transform: rotate(360deg);
+
+  }
+  100% {
+    right: 200px;
+    transform: rotate(0deg);
   }
 }
 
@@ -266,15 +288,25 @@ header .post-title {
   flex-direction: column;
   width: 5%;
   justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .post-score figure {
   width: 100%;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .vote {
   width: 50%;
+}
+
+.vote-small {
+  width: 50%;
+  stroke: blue;
 }
 
 .score {
@@ -355,6 +387,82 @@ header .post-title {
   display: block;
 }
 
+/* Comments */
+
+.comment-list {
+  background-color: #E5E4E2;
+  border-radius: 25px;
+  grid-area: main;
+  margin-left: 2%;
+  margin-bottom: 1%;
+  padding: 2%;
+  box-sizing: border-box;
+  place-content: start center;
+}
+
+.comment {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.comment-content header {
+  font-family: 'Ubuntu', sans-serif;
+  text-align: left;
+  box-sizing: border-box;
+  width: fit-content;
+  padding: 0.25rem 1rem;
+  border-radius: 25px;
+}
+
+.comment-content header p {
+  margin: 0;
+  width: auto;
+}
+
+.comment-content header a {
+  font-weight: normal;
+  text-decoration: none;
+  color: black;
+}
+
+.comment-content header a:link {
+  color: black;
+}
+
+.comment-content header a:visited {
+  color: black;
+}
+
+.comment-content header a:hover {
+  font-weight: 600;
+  text-decoration: underline;
+  color: black;
+}
+
+
+.comment-content header time {
+  margin: 0 1rem;
+  font-style: italic;
+}
+
 /* Sidebar */
 
 .sidebar {
@@ -391,7 +499,6 @@ header .post-title {
   margin: 2%;
 }
 
-
 /* MEDIA RULES */
 
 @media only screen and (max-width: 1000px) {
@@ -413,8 +520,9 @@ header .post-title {
       "main main main main"
   }
 
-  
   .post-box {
     margin-right: 2%;
   }
+
 }
+

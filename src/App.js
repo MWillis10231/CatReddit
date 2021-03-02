@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectBackground } from './Redux/background/backgroundSlice'
 import { fetchCatData, selectPosts, selectUrl } from './Redux/postsource/sourceSlice'
 import './App.css';
-import cat from './logo.png'
 
 import {
   BrowserRouter as Router,
@@ -17,6 +16,8 @@ import FilterBar from './components/FilterBar.js'
 import SideBar from './components/SideBar.js'
 import PostBoxContainer from './components/PostBoxContainer.js'
 import SinglePostContainer from './components/SinglePostContainer'
+import Loading from './components/Loading'
+import LoadFail from './components/LoadFail'
 
 function App() {
   const dispatch = useDispatch();
@@ -35,29 +36,15 @@ function App() {
   }, [status, dispatch, url])
 
   let content
+  let postContent
 
   if (status === 'loading') {
-    content = (
-      <div className="post-box-loading">
-        <div className="loader">
-          <p className="load-text">Loading...</p>
-          <img className="load-image" alt="a cat" src={cat} />
-        </div>
-      </div>
-      )
+    content = (<Loading/>)
   } else if (status === 'succeeded') {
-    content = 
-      <PostBoxContainer data={data} error={error} status={status}/>
+    content = (<PostBoxContainer data={data} error={error} status={status} comments='hide'/>)
+    postContent = (<SinglePostContainer data={data} error={error} status={status} comments='display'/>)
   } else if (status === 'failed') {
-    content = (
-      <div className="post-box-loading">
-        <div className="loader">
-          <p className="load-text">{error}</p>
-          <img className="load-image" alt="a cat" src={cat} />
-          <button type="button" onClick={() => dispatch(fetchCatData(url))}>Try again</button>
-        </div>
-      </div>
-    )
+    content = (<LoadFail/>)
   }
    return (
     <Router>
@@ -69,7 +56,9 @@ function App() {
         <Route exact path="/" render={() => (
           <React.Fragment>{content}</React.Fragment>
         )}/>
-        <Route exact path="/:postId" component={SinglePostContainer}/>
+        <Route exact path="/:postId" render={() => (
+          <React.Fragment>{postContent}</React.Fragment>
+        )}/>
         <Redirect to="/" />
       </Switch>
     </div>

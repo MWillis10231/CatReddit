@@ -5,22 +5,29 @@ import { urlChanged } from '../Redux/postsource/sourceSlice';
 import { Link } from 'react-router-dom'
 
 export default function Interactions(props) {
-    const shareURL = `https://embed.redditmedia.com/widgets/embed?url=${props.data.data.url}`
-    const url = props.data.data.url
-    const permaLink = props.data.data.permalink;
+    const shareURL = `https://embed.redditmedia.com/widgets/embed?url=${props.data.url}`
+    const url = props.data.url
+    const permaLink = props.data.permalink;
     const fixedLink = permaLink.slice(0, -1);
     
     const buttonColor = useSelector(selectBackground)
 
     const dispatch = useDispatch()
-    const changeUrl = (e) => {
-        const comments = e.target.value
-        dispatch(urlChanged(comments))
+    function changeUrl() {
+        dispatch(urlChanged(fixedLink))
+    }
+
+    let comments;
+
+    if (props.comments === 'display') {
+        comments = null;
+    } else if (props.comments === 'hide') {
+        comments = (<li style={{backgroundColor: buttonColor}}><Link to={`/${props.id}`} onClick={changeUrl}>Comments</Link></li>)
     }
     
     return(
         <ul className="post-interactions">
-            <li style={{backgroundColor: buttonColor}}><Link to={`/${props.id}`} value={fixedLink}>Comments</Link></li>
+            {comments}
             <li className="drop-down" style={{backgroundColor: buttonColor}}>
                 <div className="drop-down-button" >Copy</div>
                 <div className="drop-down-content">

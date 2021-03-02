@@ -28,7 +28,6 @@ const initialState = {
     url: baseUrl + urlFilters.default + '.json',
     error: null,
     data: [],
-    comments: [],
   }
   
 const sourceSlice = createSlice({
@@ -40,6 +39,11 @@ const sourceSlice = createSlice({
             state.url = baseUrl + urlFilters[page] + '.json'
             state.status = 'idle'
         },
+        urlChanged(state, action) {
+            const page = action.payload
+            state.url = redditURL + page + '.json'
+            state.status = 'idle'
+        }
     },
     extraReducers: {
         [fetchCatData.pending]: (state, action) => {

@@ -7,20 +7,20 @@ import { useSelector } from 'react-redux';
 
 export default function PostBox (props) {
     const overlayColor = useSelector(selectBackground)
-    let permalink = `https://www.reddit.com/${props.data.data.permalink}`
+    let permalink = `https://www.reddit.com/${props.data.permalink}`
     let picture;
     let postContent;
     let pictureContent;
 
-    if (props.data.data.media === null && !props.data.data.post_hint && !props.data.data.is_gallery) {
-        postContent = <PostContent data={props.data} className="post-content-small" id={props.id}/>
+    if (props.data.media === null && !props.data.post_hint && !props.data.is_gallery) {
+        postContent = <PostContent data={props.data} className="post-content-small" id={props.id} comments={props.comments}/>
         pictureContent = null;
     } else {
-        postContent = <PostContent data={props.data} id={props.id}/>
+        postContent = <PostContent data={props.data} id={props.id} comments={props.comments}/>
     }
     // if it's an image, set picture accordingly
-    if (props.data.data.post_hint === 'image' ) {
-        picture = props.data.data.url;
+    if (props.data.post_hint === 'image' ) {
+        picture = props.data.url;
         pictureContent = (
             <figure className="post-media-container">
                 <a href={permalink} target="_blank" rel="noreferrer">  
@@ -29,7 +29,7 @@ export default function PostBox (props) {
             </figure>
             )
     // if gallery doesn't have a thumbnail display default kitty
-    } else if (props.data.data.is_gallery && props.data.data.thumbnail === 'default') {
+    } else if (props.data.is_gallery && props.data.thumbnail === 'default') {
         pictureContent = (
             <figure className="post-media-container">
                 <a href={permalink}>  
@@ -39,8 +39,8 @@ export default function PostBox (props) {
             </figure>
         )
     // for gallerys return first image if possible
-    } else if (props.data.data.is_gallery) {   
-        picture = props.data.data.thumbnail;
+    } else if (props.data.is_gallery) {   
+        picture = props.data.thumbnail;
         pictureContent = (
             <figure className="post-media-container">
                 <a href={permalink} target="_blank" rel="noreferrer">  
@@ -49,16 +49,16 @@ export default function PostBox (props) {
             </figure>
         )
     // return videos correctly
-    } else if (props.data.data.post_hint === 'hosted:video') {
-        picture = props.data.data.media.reddit_video.fallback_url;
+    } else if (props.data.post_hint === 'hosted:video') {
+        picture = props.data.media.reddit_video.fallback_url;
         pictureContent = (
             <figure className="post-media-container">
                 <video className="post-video" autoPlay controls><source src={picture}></source>Your browser does not support the video tag</video>
             </figure>
         )
     // return gifs correctly
-    } else if (props.data.data.post_hint === 'rich:video') {
-        picture = props.data.data.thumbnail;
+    } else if (props.data.post_hint === 'rich:video') {
+        picture = props.data.thumbnail;
         pictureContent = (
             <figure className="post-media-container">
                 <video className="post-video" autoPlay controls><source src={picture}></source>Your browser does not support the video tag</video>
@@ -78,7 +78,7 @@ export default function PostBox (props) {
     // return all cases
     return (
         <div className="post-box">
-            <Score score={props.data.data.score}/>
+            <Score score={props.data.score}/>
             {pictureContent}
             {postContent}
         </div>

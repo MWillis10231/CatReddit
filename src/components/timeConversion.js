@@ -1,10 +1,12 @@
-export default function convertTime(unix) {
+export function convertTime(unix, length) {
     var postTime = new Date(unix * 1000);
     var hours = postTime.getHours();
     var minutes = postTime.getMinutes() < 10 ? '0' + postTime.getMinutes() : postTime.getMinutes();
     var seconds = postTime.getSeconds() < 10 ? '0' + postTime.getSeconds() : postTime.getSeconds();
 
     var date = postTime.getDate();
+    var date3 = postTime.getDate() < 10 ? '0' + postTime.getDate() : postTime.getDate();
+
     let date2;
 
     // Addresses the issue of ordinal numerals in English dating system
@@ -27,8 +29,16 @@ export default function convertTime(unix) {
 
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var month = months[postTime.getMonth()];
+    var monthNum = postTime.getMonth() < 10 ? '0' + postTime.getMonth() : postTime.getMonth();
 
     var year = postTime.getFullYear();
-    var time = `Posted at ${hours}:${minutes}:${seconds} on ${day}, ${date2} ${month} ${year}`
+
+    let time
+
+    if (length === 'short') {
+        time = `${hours}:${minutes}:${seconds} | ${date3}/${monthNum}/${year}`
+    } else {
+        time = `Posted at ${hours}:${minutes}:${seconds} on ${day}, ${date2} ${month} ${year}`
+    }
     return time;
 }
