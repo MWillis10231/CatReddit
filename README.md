@@ -18,6 +18,7 @@ Some more interactivity (if possible using the unofficial API)
 ## Known Bugs
 Search Bar does not work properly
 If using a very small mobile view, comments can overflow off the sides
+If you scroll down, then view comments, you stay scrolled down.
 
 ### Credit 
 
