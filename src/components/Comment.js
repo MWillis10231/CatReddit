@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 export default function Comment(props) {
     // Sort out the date - converts the UNIX UTC time to a human-readable date
     const postDate = convertTime(props.data.created_utc, 'short');
-    const flairColor = useSelector(selectBackground)
+    const commentColor = useSelector(selectBackground)
     const commentId = props.data.title
     const authorPage = `https://www.reddit.com/user/${props.data.author}`
 
@@ -17,12 +17,12 @@ export default function Comment(props) {
                 <div className="comment-container">
                     <ScoreSmall score={props.data.score} />
                     <div className="comment-content">
-                        <header style={{backgroundColor: flairColor}}>
+                        <header style={{backgroundColor: commentColor}}>
                             <p><a href={authorPage} target="_blank" rel="noreferrer">{props.data.author}</a><time>{postDate}</time></p>
                         </header>
-                        <body className="comment-body">
+                        <div className="comment-body">
                             <p>{props.data.body}</p>
-                        </body>
+                        </div>
                     </div>
                 </div>
                 <br></br>

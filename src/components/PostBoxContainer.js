@@ -5,10 +5,9 @@ export default function PostBoxContainer(props) {
     let content;
     
     if (props.data) {
-        let uniqueId = uuidv4();
         let comments = props.comments
         content = props.data.data.children.map(post => (
-            <PostBox2 data={post.data} id={uniqueId} key={uniqueId} comments={comments}/>
+            <PostBox2 data={post.data} id={uuidv4()} key={uuidv4()} comments={comments}/>
         ))
     }
     

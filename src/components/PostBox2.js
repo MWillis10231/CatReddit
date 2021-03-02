@@ -12,11 +12,11 @@ export default function PostBox (props) {
     let postContent;
     let pictureContent;
 
-    if (props.data.media === null && !props.data.post_hint && !props.data.is_gallery) {
-        postContent = <PostContent data={props.data} className="post-content-small" id={props.id} comments={props.comments}/>
+    if (props.data.thumbnail_height === null) {
+        postContent = <PostContent data={props.data} className={'post-content-small'} id={props.id} comments={props.comments}/>
         pictureContent = null;
     } else {
-        postContent = <PostContent data={props.data} id={props.id} comments={props.comments}/>
+        postContent = <PostContent data={props.data} className={'post-content'} id={props.id} comments={props.comments}/>
     }
     // if it's an image, set picture accordingly
     if (props.data.post_hint === 'image' ) {
@@ -64,14 +64,16 @@ export default function PostBox (props) {
                 <video className="post-video" autoPlay controls><source src={picture}></source>Your browser does not support the video tag</video>
             </figure>
         )
-    // otherwise return default kitty just in case
-    } else {
-        <figure className="post-media-container">
-            <a href={permalink} target="_blank" rel="noreferrer">
-                <img className="post-image-default" alt="a cat" src={cat} />
-                <figcaption className="default-image-text" style={{backgroundColor: overlayColor}}><em>Image not found</em></figcaption>
-            </a>
-        </figure>
+    // return GIPHY embedded gifs at least in thumbnail form
+    } else if (props.data.post_hint === 'link') {
+        picture = props.data.thumbnail;
+        pictureContent = (
+            <figure className="post-media-container">
+                <a href={permalink} target="_blank" rel="noreferrer">  
+                    <img className="post-image" alt="a cat" src={picture} />
+                </a>
+            </figure>
+        )
     }
 
 

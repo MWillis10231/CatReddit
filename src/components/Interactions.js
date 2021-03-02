@@ -31,7 +31,7 @@ export default function Interactions(props) {
             <li className="drop-down" style={{backgroundColor: buttonColor}}>
                 <div className="drop-down-button" >Copy</div>
                 <div className="drop-down-content">
-                    <input type="text" value={url} id={url} style={{backgroundColor: buttonColor}}></input>
+                    <input type="text" value={url} id={url} style={{backgroundColor: buttonColor}} readOnly></input>
                     <button style={{backgroundColor: buttonColor}}>Copy URL</button>
                 </div>
             </li>

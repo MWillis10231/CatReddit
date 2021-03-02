@@ -9,7 +9,7 @@ export default function PostContent(props) {
     const flairColor = useSelector(selectBackground)
 
     return(
-        <div className="post-content">
+        <div className={props.className}>
             <p>
                 Posted by <strong>{props.data.author}</strong>
                 <br></br>

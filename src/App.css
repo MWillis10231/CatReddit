@@ -104,8 +104,7 @@ main {
   background-color: #E5E4E2;
   border-radius: 25px;
   grid-area: main;
-  margin-left: 2%;
-  margin-bottom: 1%;
+  margin: 0% 2% 1%;
   display: flex;
   flex-direction: row;
   padding: 2%;
@@ -320,7 +319,8 @@ header .post-title {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0.5%;
+  margin: 5% 0.5% 0.5%;
+  align-self: center;
   padding: 0;
   list-style-type: none;
   overflow: hidden;
@@ -393,8 +393,7 @@ header .post-title {
   background-color: #E5E4E2;
   border-radius: 25px;
   grid-area: main;
-  margin-left: 2%;
-  margin-bottom: 1%;
+  margin: 0% 2% 1%;
   padding: 2%;
   box-sizing: border-box;
   place-content: start center;
@@ -499,14 +498,32 @@ header .post-title {
   margin: 2%;
 }
 
+@media only screen and (max-width: 1440px) {
+
+  .rules h3 {
+    font-size: 1.75rem;
+  }
+
+  .rules li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
 /* MEDIA RULES */
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1024px) {
   .sidebar {
     grid-area: colorchange;
+    position: static;
+    top: 0;
   }
 
   .rules {
+    display: none;
+  }
+
+  .sidebar h2 {
     display: none;
   }
 
@@ -524,5 +541,79 @@ header .post-title {
     margin-right: 2%;
   }
 
+  .post-title h2 {
+    font-size: 1.25rem;
+  }
+
 }
 
+@media only screen and (max-width: 768px) {
+  
+  .post-title h2 {
+    font-size: 1rem;
+  }
+
+  .post-flair {
+    font-size: 0.75rem;
+  }
+
+  .post-content p { 
+    font-size: 0.8rem;
+  }
+
+  .post-content-small p { 
+    font-size: 0.8rem;
+  }
+
+  .post-interactions li {
+    font-size: 0.8rem;
+  }
+
+  .drop-down .drop-down-button {
+    font-size: 0.8rem;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .post-media-container {
+    width: 50%;
+  }
+
+  .post-score {
+    margin-right: 0.5rem;
+  }
+
+  .comment-body p {
+    margin-top: 1%;
+  }
+
+}
+
+@media only screen and (max-width: 425px) {
+  .colour-change {
+    margin: 1%;
+  }
+
+  .colour-change h3 {
+    margin-bottom: 0px;
+  }
+
+  .post-box {
+    flex-direction: column;
+  }
+
+  .post-score {
+    display: none;
+  }
+
+  .post-media-container {
+    width: 100%;
+  }
+
+  .post-content {
+    width: 100%;
+  }
+  
+}
