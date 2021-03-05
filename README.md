@@ -28,8 +28,9 @@ List of features:
 * Media content visible with posts
 * Scores / time posted / other meta-data visible
 * Posts with their comments viewable in a separate window
-* Colour changing design
+* Colour changing design options
 * Error pages
+* Desktop / Tablet / Mobile views
 
 ## Features I'd like to implement
 (easy)
@@ -37,6 +38,7 @@ List of features:
 * Stickied posts tagged
 * Admin posts tagged
 * Author replies highlighted in a special way
+* Persistent colour-scheme on revisits (remembers preferences)
 
 (more tricky)
 
