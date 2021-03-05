@@ -14,7 +14,7 @@ export default function Rules() {
             <li>No personal information</li>
             <li>No meme, image macro, low-effort content</li>
             <li>No recent/egregious reposting</li>
-            <li>Reposts and crossposts allowed witwhin reason</li>
+            <li>Reposts and crossposts allowed within reason</li>
             <li>Your reddit account must be older than 10 days AND have at least 50 combined karma to post.</li>
           </ol>
         </section>
