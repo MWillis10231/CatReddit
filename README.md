@@ -51,6 +51,7 @@ List of features:
 * Refreshing or pressing back breaks the app
 * Search Bar does not work as intended
 * If using a very small mobile view, deeply nested comments can overflow off the sides
+* Zero score comments (and probably posts) do not load the upvote/downvotes properly
 
 ### Credits
 
