@@ -1,22 +1,8 @@
-## Brief
+# CatReddit
 
-"For this project, you will build an application for Reddit using everything you’ve learned, including React and Redux. Reddit is a website where people share links to articles, media and other things on the web. The Reddit API provides data which you will integrate into your application. The application will allow users to view and search posts and comments provided by the API."
+Front-end React/Redux application by Matthew Willis.
 
-## Concept & Implementation
-
-I decided to focus mainly on cats and r/cats - mostly because I didn't have any other original ideas and I didn't want to make a more generic Reddit client. I also wanted to make something with a theme that I had to design around. I'm not the best UI designer of all time so this helped me create something cohesive design-wise.
-
-My initial mock-up focused on having one kind of sidebar on the left - however, while actually using and developing it turned out that this wasn't really usable. I moved this to the right, and hard-coded some stuff that I couldn't find from the Unofficial Api (Rules etc.) that was specific to the r/cats subreddit.
-
-It eventually ended up perhaps a little childish, but I think in general design-wise it looks pretty good.
-
-## General Thoughts
-
-I felt pretty comfortable with React before this project, but I still learnt a lot of things about stucturing my components and overall app by doing this project. If I did it again, I'd probably use a completely different naming structure, folder structure and probably approach building the whole thing differently, but this is something I learnt simply through trial and error that's hard to pick up any other way. Fixing a React Router error with a React Fragment was really satisfying too - this really helped explain why people use them in a practical way. Another highlight was getting the comments to display in a way that's very similar to the original Reddit design.
-
-Redux... This is where I struggled. I found keeping my state in React to be fine, but initially I really struggled with Redux. I ended up running through the tutorials again a few times on the Redux website and really breaking them down stage by stage. By the end it paid off - I got the hang of Redux state and the ability to not have to pass certain bits of state through a million React components is really helpful. There's a time and a place it seems, and this helped illustrate some of the whens and when-nots. I'm still not super happy with the Thunks, but this is something I'm looking forward to practicing in the future. 
-
-Javascript / CSS - I learnt some new tricks here, including CSS animations, and I'm feeling pretty comfortable with Javascript in general. Happy to solidify my skills and add a few new ones too. 
+![alt text](https://github.com/MWillis10231/CatReddit/blob/master/public/catreddit.png "Plan")
 
 ## Features
 
@@ -29,6 +15,28 @@ List of features:
 * Colour changing design options
 * Error pages
 * Desktop / Tablet / Mobile views
+
+## Brief
+
+"For this project, you will build an application for Reddit using everything you’ve learned, including React and Redux. Reddit is a website where people share links to articles, media and other things on the web. The Reddit API provides data which you will integrate into your application. The application will allow users to view and search posts and comments provided by the API."
+
+## Concept & Implementation
+
+![alt text](https://github.com/MWillis10231/CatReddit/blob/master/public/catRedditPlan.png "Plan")
+
+I decided to focus mainly on cats and r/cats - mostly because I didn't have any other original ideas and I didn't want to make a more generic Reddit client. I also wanted to make something with a theme that I had to design around. I'm not the best UI designer of all time so this helped me create something cohesive design-wise.
+
+My initial mock-up focused on having one kind of sidebar on the left - however, while actually using and developing it turned out that this wasn't really usable. I moved this to the right, and hard-coded some stuff that I couldn't find from the Unofficial Api (Rules etc.) that was specific to the r/cats subreddit.
+
+It eventually ended up perhaps a little childish, but I think in general design-wise it looks pretty good.
+
+## General Thoughts
+
+I felt pretty comfortable with React before this project, but I still learnt a lot of things about stucturing my components and overall app by doing this project. If I did it again, I'd probably use a completely different naming structure, folder structure and probably approach building the whole thing differently, but this is something I learnt simply through trial and error that's hard to pick up any other way. Fixing a React Router error with a React Fragment was really satisfying too - this really helped explain why people use them in a practical way. Another highlight was getting the comments to display in a way that's very similar to the original Reddit design.
+
+Initially I really struggled with Redux. I ended up running through the tutorials again a few times on the Redux website and really breaking them down stage by stage. By the end it paid off - I got the hang of Redux state and the ability to not have to pass certain bits of state through lots of React components is really helpful. There's a time and a place it seems, and this helped illustrate some of the whens and when-nots. I'm still not super happy with the Thunks, but this is something I'm looking forward to practicing in the future. 
+
+Javascript / CSS - I learnt some new tricks here, including CSS animations, and I'm feeling pretty comfortable with Javascript in general. Happy to solidify my skills and add a few new ones too. 
 
 ## Features I'd like to implement
 (easy)
