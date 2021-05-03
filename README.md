@@ -14,11 +14,11 @@ Live at: https://cat-reddit.netlify.app/
 ## Features
 
 List of features:
-* Posts obtained from r/cats
-* Working reddit filters
-* Media content visible with posts
+* Posts obtained from r/cats via Reddit Unofficial API
+* Working reddit filters to filter content
+* Media content visible with posts (pictures, gifs, etc.)
 * Scores / time posted / other meta-data visible
-* Posts with their comments viewable in a separate window
+* Individual posts with their comments viewable in a separate window/view
 * Colour changing design options
 * Error pages
 * Desktop / Tablet / Mobile views
