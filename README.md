@@ -1,15 +1,17 @@
 # CatReddit
 
-Front-End React/Redux Application by Matthew Willis.
+## About
 
-![alt text](https://github.com/MWillis10231/CatReddit/blob/master/public/catreddit.png "Plan")
+Front-End React/Redux Application developed as part of the Full-Stack Engineer Course by Matthew Willis.
+
+![alt text](https://github.com/MWillis10231/CatReddit/blob/master/public/catreddit.png "Live preview")
 
 Live at: https://cat-reddit.netlify.app/
 
 ## Libraries/Frameworks/Runtimes
 * React
 * Redux
-* Node.js
+* Node
 
 ## Features
 
@@ -45,26 +47,23 @@ Initially I really struggled with Redux. I ended up running through the tutorial
 
 Javascript / CSS - I learnt some new tricks here, including CSS animations, and I'm feeling pretty comfortable with Javascript in general. Happy to solidify my skills and add a few new ones too. 
 
-## Features I'd like to implement
-(easy)
+## Known Issues
+
+* Refreshing or pressing back breaks the app
+* Search Bar does not work as intended
+* If using a very small mobile view, deeply nested comments can overflow off the sides
+* Zero score comments (and probably posts) do not load the upvote/downvotes properly
+
+## Planned Improvements
 
 * Stickied posts tagged
 * Admin posts tagged
 * Author replies highlighted in a special way
 * Persistent colour-scheme on revisits (remembers preferences)
 
-(more tricky)
-
 * Back-button/refresh button functionality (This breaks the app at the moment)
 * A working searchbar (tips here very welcome, mine at the moment filters only)
 * Some more interactivity (if possible using the unofficial API)
-
-## Known Bugs
-
-* Refreshing or pressing back breaks the app
-* Search Bar does not work as intended
-* If using a very small mobile view, deeply nested comments can overflow off the sides
-* Zero score comments (and probably posts) do not load the upvote/downvotes properly
 
 ### Credits
 
