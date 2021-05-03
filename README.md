@@ -1,8 +1,15 @@
 # CatReddit
 
-Front-end React/Redux application by Matthew Willis.
+Front-End React/Redux Application by Matthew Willis.
 
 ![alt text](https://github.com/MWillis10231/CatReddit/blob/master/public/catreddit.png "Plan")
+
+Live at: https://cat-reddit.netlify.app/
+
+## Libraries/Frameworks/Runtimes
+* React
+* Redux
+* Node.js
 
 ## Features
 
