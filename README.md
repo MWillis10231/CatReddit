@@ -49,8 +49,6 @@ Javascript / CSS - I learnt some new tricks here, including CSS animations, and 
 
 ## Known Issues
 
-* Refreshing or pressing back breaks the app
-* Search Bar does not work as intended
 * If using a very small mobile view, deeply nested comments can overflow off the sides
 * Zero score comments (and probably posts) do not load the upvote/downvotes properly
 
@@ -61,9 +59,7 @@ Javascript / CSS - I learnt some new tricks here, including CSS animations, and 
 * Author replies highlighted in a special way
 * Persistent colour-scheme on revisits (remembers preferences)
 
-* Back-button/refresh button functionality (This breaks the app at the moment)
-* A working searchbar (tips here very welcome, mine at the moment filters only)
-* Some more interactivity (if possible using the unofficial API)
+* An improved version using offical API
 
 ### Credits
 
